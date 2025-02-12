@@ -2,7 +2,13 @@
 import { useEffect, useRef } from 'react';
 import './index.scss';
 
-const DroneHero = ({ backgroundImage, droneImage }) => {
+const DroneHero = ({
+  backgroundImage,
+  droneImage,
+  bgSize = 'cover',
+  droneWidth = 250,
+  droneHeight = 250,
+}) => {
   const bgRef = useRef(null);
   const overlayRef = useRef(null);
   const droneRef = useRef(null);
@@ -23,7 +29,7 @@ const DroneHero = ({ backgroundImage, droneImage }) => {
         0,
         Math.min(1, -parentRect.top / (parentRect.height / 2)),
       );
-      // console.log(scrollProgress);
+
       // Drone animation
       const rotation = scrollProgress * 180; // Rotate 180 degrees
       const scale = 2 + scrollProgress * 1.5; // Zoom in effect
@@ -52,13 +58,20 @@ const DroneHero = ({ backgroundImage, droneImage }) => {
         <div
           ref={bgRef}
           className="backgroundImage"
-          style={{ backgroundImage: `url(${backgroundImage})` }}
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: bgSize,
+          }}
         />
         <div ref={overlayRef} className="blackOverlay" />
         <div
           ref={droneRef}
           className="droneImage"
-          style={{ backgroundImage: `url(${droneImage})` }}
+          style={{
+            backgroundImage: `url(${droneImage})`,
+            width: `${droneWidth}px`,
+            height: `${droneHeight}px`,
+          }}
         />
       </header>
     </div>

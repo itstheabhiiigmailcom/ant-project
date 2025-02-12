@@ -20,6 +20,9 @@ async function Home() {
         <DroneHero
           backgroundImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e6c13961e55_442380534.webp"
           droneImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e1667961e56_Drone.webp"
+          bgSize="cover" // Set background size dynamically
+          droneWidth={300} // Change drone width dynamically
+          droneHeight={300} // Change drone height dynamically
         />
       </div>
 
