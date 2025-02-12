@@ -1,0 +1,184 @@
+.image-grid {
+  display: inline-block;
+  overflow: hidden;
+  position: relative;
+  background-size: 0 0;
+  transition: var(--t, 0.5s);
+
+  & > div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: inherit;
+    background-size: cover;
+    -webkit-mask: linear-gradient(#fff, #fff) no-repeat;
+    -webkit-mask-size: calc(100% / var(--n) + 1px) calc(100% / var(--n) + 1px);
+    -webkit-mask-position: var(--p);
+    mask: linear-gradient(#fff, #fff) no-repeat;
+    mask-size: calc(100% / var(--n) + 1px) calc(100% / var(--n) + 1px);
+    mask-position: var(--p);
+    transition: inherit;
+    transform-origin: var(--p);
+  }
+
+  &.hover-enabled {
+    &:hover {
+      transform: scale((var(--s)));
+      & > div {
+        transform: scale(calc(1 / var(--s)));
+      }
+    }
+  }
+
+  &.static-enabled {
+    transform: scale((var(--s)));
+    & > div {
+      transform: scale(calc(1 / var(--s)));
+    }
+  }
+}
+
+.image-rectangle {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 30px;
+  position: relative;
+  overflow: hidden;
+  background-size: 0 0;
+  transition: var(--t, 0.5s);
+
+  & > div {
+    position: absolute;
+    top: var(--d);
+    left: 0;
+    right: 0;
+    bottom: var(--d);
+    background-image: inherit;
+    background-size: cover;
+    -webkit-mask: linear-gradient(#fff, #fff) no-repeat;
+    -webkit-mask-size: calc(100% / var(--n) + 1px) 100%;
+    -webkit-mask-position: var(--p) 50%;
+    mask: linear-gradient(#fff, #fff) no-repeat;
+    mask-size: calc(100% / var(--n) + 1px) 100%;
+    mask-position: var(--p) 50%;
+    transition: inherit;
+    transform-origin: var(--p) 50%;
+  }
+
+  &.hover-enabled {
+    &:hover {
+      transform: scale(var(--s));
+      & > div:nth-child(odd) {
+        transform: translateY(var(--d)) scale(calc(1 / var(--s)));
+      }
+      & > div:nth-child(even) {
+        transform: translateY(calc(-1 * var(--d))) scale(calc(1 / var(--s)));
+      }
+    }
+  }
+
+  &.static-enabled {
+    transform: scale(var(--s));
+    & > div:nth-child(odd) {
+      transform: translateY(var(--d)) scale(calc(1 / var(--s)));
+    }
+    & > div:nth-child(even) {
+      transform: translateY(calc(-1 * var(--d))) scale(calc(1 / var(--s)));
+    }
+  }
+}
+
+.image-triangle {
+  display: inline-block;
+  margin: 30px;
+  position: relative;
+  background-size: 0 0;
+  transition: var(--t, 0.5s);
+
+  & > div {
+    position: absolute;
+    top: var(--d);
+    left: 0;
+    right: 0;
+    bottom: var(--d);
+    background-image: inherit;
+    background-size: cover;
+    transition: inherit;
+  }
+
+  & > div:nth-child(even) {
+    clip-path: polygon(
+      calc(-2 * var(--p) + var(--tp)) 0%,
+      calc(-1 * var(--p) + var(--tp)) 100%,
+      calc(0 * var(--p) + var(--tp)) 0%
+    );
+    transform-origin: calc(var(--tp) - 2 * var(--p)) 50%;
+  }
+
+  & > div:nth-child(odd) {
+    clip-path: polygon(
+      calc(0 * var(--p) + var(--tp)) 100%,
+      calc(1 * var(--p) + var(--tp)) 0%,
+      calc(2 * var(--p) + var(--tp)) 100%
+    );
+    transform-origin: var(--tp) 50%;
+  }
+
+  &.hover-enabled:hover {
+    & > div:nth-child(odd) {
+      transform: translateY(var(--d)) scale(calc(1 / var(--s)));
+    }
+    & > div:nth-child(even) {
+      transform: translateY(calc(-1 * var(--d))) scale(calc(1 / var(--s)));
+    }
+  }
+
+  &.static-enabled {
+    & > div:nth-child(odd) {
+      transform: translateY(var(--d)) scale(calc(1 / var(--s)));
+    }
+    & > div:nth-child(even) {
+      transform: translateY(calc(-1 * var(--d))) scale(calc(1 / var(--s)));
+    }
+  }
+}
+
+.image-circle {
+  position: relative;
+  background-size: 0 0;
+  margin: 50px auto;
+
+  & > .tile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background: center / cover no-repeat;
+    background-image: inherit;
+
+    mask: conic-gradient(
+      from var(--angle),
+      #fff 0 calc(360deg / var(--n)),
+      transparent calc(360deg / var(--n) + 1deg) 360deg
+    );
+    -webkit-mask: conic-gradient(
+      from var(--angle),
+      #fff 0 calc(360deg / var(--n)),
+      transparent calc(360deg / var(--n) + 1deg) 360deg
+    );
+
+    transition: var(--t);
+  }
+
+  &.hover-enabled:hover > .tile {
+    transform: var(--trans);
+  }
+
+  &.static-enabled > .tile {
+    transform: var(--trans);
+  }
+}

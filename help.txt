@@ -1,0 +1,123 @@
+'use client';
+import { useEffect, useRef, useState } from 'react';
+import './index.scss';
+
+const DroneHero = () => {
+  const bgRef = useRef(null);
+  const overlayRef = useRef(null);
+  const droneRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    const component = droneRef.current?.parentElement;
+    const handleWheel = (event) => {
+      if (!component) return;
+      event.preventDefault();
+
+      const delta = event.deltaY > 0 ? 0.08 : -0.08;
+      const newProgress = Math.min(Math.max(scrollProgress + delta, 0), 1.5); // Extended for smooth exit
+      setScrollProgress(newProgress);
+
+      animateDrone(newProgress);
+    };
+
+    const animateDrone = (progress) => {
+      if (!droneRef.current || !bgRef.current || !overlayRef.current) return;
+
+      let rotation = Math.min(progress * 180, 180);
+      let scale = 2.5 + progress * 0.7;
+
+      // Move up and exit screen smoothly
+      let translateY = (1 - progress) * 120 - 50;
+      if (progress > 1) translateY -= (progress - 1) * 150;
+
+      // **Fix: Ensuring visibility until full exit**
+      let opacity = progress < 1.2 ? 1 : 1 - (progress - 1.2) * 3;
+
+      let translateX = -50 + (progress > 0.8 ? -5 : 0);
+
+      droneRef.current.style.transform = `
+        translate(${translateX}%, ${translateY}%)
+        rotate(${rotation}deg)
+        scale(${scale})
+      `;
+      droneRef.current.style.opacity = opacity;
+
+      // **Fix: Delay black overlay until drone is almost out**
+      const overlayOpacity = progress < 1.1 ? progress * 0.8 : 1;
+      overlayRef.current.style.opacity = overlayOpacity;
+
+      // Background zooms out as drone moves up
+      const bgScale = 1.5 - progress * 0.5;
+      bgRef.current.style.transform = `scale(${bgScale})`;
+    };
+
+    component?.addEventListener('wheel', handleWheel, { passive: false });
+
+    return () => {
+      component?.removeEventListener('wheel', handleWheel);
+    };
+  }, [scrollProgress]);
+
+  return (
+    <header className="heroSection">
+      <div ref={bgRef} className="backgroundImage" />
+      <div ref={overlayRef} className="blackOverlay" />
+      <div ref={droneRef} className="droneImage" />
+    </header>
+  );
+};
+
+export default DroneHero;
+
+
+
+CSS 
+
+.heroSection {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e6c13961e55_442380534.webp');
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  transform-origin: center center;
+  transition: transform 0.8s ease-out;
+}
+
+.blackOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  z-index: 2;
+  transition: opacity 0.8s ease-out;
+}
+
+.droneImage {
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 100%) scale(2.5);
+  width: 250px;
+  aspect-ratio: 862/1005;
+  background-image: url('https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e1667961e56_Drone.webp');
+  background-size: contain;
+  background-repeat: no-repeat;
+  transform-origin: center center;
+  transition:
+    transform 1.2s ease-out,
+    opacity 0.8s ease;
+  z-index: 3;
+}

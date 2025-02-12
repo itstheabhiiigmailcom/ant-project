@@ -1,0 +1,2 @@
+# Run lint-staged to auto-fix and format staged files
+npx lint-staged

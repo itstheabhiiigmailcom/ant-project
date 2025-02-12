@@ -1,0 +1,50 @@
+.parentSection {
+  height: 200vh; /* Parent height */
+  position: relative;
+}
+
+.heroSection {
+  position: sticky;
+  top: 0;
+  height: 100vh; /* Component height */
+  overflow: hidden;
+}
+
+.backgroundImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  transform-origin: center center;
+  transition: transform 0.5s ease;
+}
+
+.blackOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.droneImage {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(2); /* Initially larger and centered */
+  width: 250px; /* Increased initial size */
+  height: 250px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center; /* Ensures the image is centered */
+  transform-origin: center center;
+  transition:
+    transform 0.8s ease-out,
+    opacity 0.8s ease-out;
+}
