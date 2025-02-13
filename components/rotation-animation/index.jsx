@@ -8,19 +8,18 @@ const HeroAnimation = ({
   className,
   floatingClassName = '',
 }) => {
-  const bgRef = useRef(null);
-  const floatingRef = useRef(null);
   const parentRef = useRef(null);
 
   useEffect(() => {
     const parent = parentRef.current;
-    const floatingElement = floatingRef.current;
-    const bg = bgRef.current;
+    if (!parent) return;
+
+    const bg = parent.querySelector('.background-image');
+    const floatingElement = parent.querySelector('.floating-element');
 
     const handleScroll = () => {
-      if (!parent || !floatingElement || !bg) return;
+      if (!bg || !floatingElement) return;
 
-      // Get the scroll position relative to the parent
       const parentRect = parent.getBoundingClientRect();
       const scrollProgress = Math.max(
         0,
@@ -28,15 +27,15 @@ const HeroAnimation = ({
       );
 
       // Floating element animation
-      const rotation = scrollProgress * 180; // Rotate 180 degrees
-      const scale = 2 + scrollProgress * 1.5; // Zoom in effect
-      const translateY = -(scrollProgress * 250); // Move up gradually
-      const opacity = scrollProgress < 1 ? 1 : 1 - (scrollProgress - 1) * 5; // Keep visible until it exits
+      const rotation = scrollProgress * 180;
+      const scale = 2 + scrollProgress * 1.5;
+      const translateY = -(scrollProgress * 250);
+      const opacity = scrollProgress < 1 ? 1 : 1 - (scrollProgress - 1) * 5;
 
       floatingElement.style.transform = `translate(-50%, ${translateY}%) rotate(${rotation}deg) scale(${scale})`;
       floatingElement.style.opacity = opacity;
 
-      // Background opacity animation (fade out completely)
+      // Background opacity animation
       const bgOpacity = 1 - scrollProgress;
       const bgScale = 1.5 - scrollProgress * 0.5;
       bg.style.transform = `scale(${bgScale})`;
@@ -51,7 +50,6 @@ const HeroAnimation = ({
     <div ref={parentRef} className={`relative ${className}`}>
       <section className="sticky top-0 h-[50%] overflow-hidden">
         <div
-          ref={bgRef}
           className="background-image absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
           style={{
             backgroundImage: `url(${backgroundImage})`,
@@ -59,11 +57,10 @@ const HeroAnimation = ({
           }}
         />
         <div
-          ref={floatingRef}
           className={`floating-element absolute top-1/2 left-1/2 bg-contain bg-center bg-no-repeat ${floatingClassName}`}
           style={{
             backgroundImage: `url(${floatingImage})`,
-            transform: `translate(-50%, -50%) rotate(0deg) scale(2)`, // Set initial position
+            transform: `translate(-50%, -50%) rotate(0deg) scale(2)`,
             opacity: 1,
           }}
         />
