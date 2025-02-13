@@ -2,26 +2,23 @@
 import { useEffect, useRef } from 'react';
 import './index.scss';
 
-const DroneHero = ({
+const HeroAnimation = ({
   backgroundImage,
-  droneImage,
-  bgSize = 'cover',
-  droneWidth = 250,
-  droneHeight = 250,
+  floatingImage,
+  className,
+  floatingClassName = '',
 }) => {
   const bgRef = useRef(null);
-  const overlayRef = useRef(null);
-  const droneRef = useRef(null);
+  const floatingRef = useRef(null);
   const parentRef = useRef(null);
 
   useEffect(() => {
     const parent = parentRef.current;
-    const drone = droneRef.current;
+    const floatingElement = floatingRef.current;
     const bg = bgRef.current;
-    const overlay = overlayRef.current;
 
     const handleScroll = () => {
-      if (!parent || !drone || !bg || !overlay) return;
+      if (!parent || !floatingElement || !bg) return;
 
       // Get the scroll position relative to the parent
       const parentRect = parent.getBoundingClientRect();
@@ -30,22 +27,20 @@ const DroneHero = ({
         Math.min(1, -parentRect.top / (parentRect.height / 2)),
       );
 
-      // Drone animation
+      // Floating element animation
       const rotation = scrollProgress * 180; // Rotate 180 degrees
       const scale = 2 + scrollProgress * 1.5; // Zoom in effect
       const translateY = -(scrollProgress * 250); // Move up gradually
       const opacity = scrollProgress < 1 ? 1 : 1 - (scrollProgress - 1) * 5; // Keep visible until it exits
 
-      drone.style.transform = `translate(-50%, ${translateY}%) rotate(${rotation}deg) scale(${scale})`;
-      drone.style.opacity = opacity;
+      floatingElement.style.transform = `translate(-50%, ${translateY}%) rotate(${rotation}deg) scale(${scale})`;
+      floatingElement.style.opacity = opacity;
 
-      // Black overlay animation
-      const overlayOpacity = scrollProgress < 0.9 ? scrollProgress * 0.8 : 1;
-      overlay.style.opacity = overlayOpacity;
-
-      // Background zoom animation
+      // Background opacity animation (fade out completely)
+      const bgOpacity = 1 - scrollProgress;
       const bgScale = 1.5 - scrollProgress * 0.5;
       bg.style.transform = `scale(${bgScale})`;
+      bg.style.opacity = bgOpacity;
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -53,29 +48,28 @@ const DroneHero = ({
   }, []);
 
   return (
-    <div ref={parentRef} className="parentSection">
-      <header className="heroSection">
+    <div ref={parentRef} className={`relative ${className}`}>
+      <section className="sticky top-0 h-[50%] overflow-hidden">
         <div
           ref={bgRef}
-          className="backgroundImage"
+          className="background-image absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            backgroundSize: bgSize,
+            transform: `scale(1.5)`,
           }}
         />
-        <div ref={overlayRef} className="blackOverlay" />
         <div
-          ref={droneRef}
-          className="droneImage"
+          ref={floatingRef}
+          className={`floating-element absolute top-1/2 left-1/2 bg-contain bg-center bg-no-repeat ${floatingClassName}`}
           style={{
-            backgroundImage: `url(${droneImage})`,
-            width: `${droneWidth}px`,
-            height: `${droneHeight}px`,
+            backgroundImage: `url(${floatingImage})`,
+            transform: `translate(-50%, -50%) rotate(0deg) scale(2)`, // Set initial position
+            opacity: 1,
           }}
         />
-      </header>
+      </section>
     </div>
   );
 };
 
-export default DroneHero;
+export default HeroAnimation;
