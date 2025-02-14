@@ -9,7 +9,7 @@ const HeroAnimation = ({
   floatingClassName = '',
 }) => {
   const parentRef = useRef(null);
-
+  const initialBgScale = 1.5;
   useEffect(() => {
     const parent = parentRef.current;
     if (!parent) return;
@@ -37,7 +37,7 @@ const HeroAnimation = ({
 
       // Background opacity animation
       const bgOpacity = 1 - scrollProgress;
-      const bgScale = 1.5 - scrollProgress * 0.5;
+      const bgScale = initialBgScale - scrollProgress * 0.5;
       bg.style.transform = `scale(${bgScale})`;
       bg.style.opacity = bgOpacity;
     };
@@ -53,7 +53,7 @@ const HeroAnimation = ({
           className="background-image absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
           style={{
             backgroundImage: `url(${backgroundImage})`,
-            transform: `scale(1.5)`,
+            transform: `scale(${initialBgScale})`,
           }}
         />
         <div

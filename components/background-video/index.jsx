@@ -62,7 +62,9 @@ export const BackgroundVideo = ({
       </div>
 
       {/* Overlay Content */}
-      <div className="absolute">{children}</div>
+      <div className="absolute inset-0 z-1 flex items-center justify-center text-white">
+        {children}
+      </div>
     </div>
   );
 };

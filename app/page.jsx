@@ -1,16 +1,16 @@
 import { BackgroundVideo } from '@/components/background-video';
-import HeroAnimation from '@/components/rotation-animation';
+import HeroAnimation from '@/components/hero-animation';
 
 async function Home() {
   return (
     <>
-      <div className="mx-auto w-[500px] bg-black py-[120vh]">
+      <div className="bg-blue-500 py-[100vh]">
         <BackgroundVideo
-          className="h-[300px] w-full"
+          className="h-[700px] w-full"
           videoUrl="https://videos.pexels.com/video-files/4562551/4562551-hd_1280_720_30fps.mp4"
           thresholdView={0.5}
         >
-          <h1 className="text-center text-xl font-bold sm:text-2xl md:text-3xl lg:text-4xl">
+          <h1 className="text- text-center text-xl font-bold text-white sm:text-2xl md:text-3xl lg:text-4xl">
             Content Over the Background
           </h1>
         </BackgroundVideo>
@@ -24,7 +24,11 @@ async function Home() {
         />
       </div>
 
-      <div className="h-300 w-full bg-blue-600" />
+      {/* <div>
+        <CarComponent />
+      </div> */}
+
+      <div className="h-300 w-full bg-blue-100" />
     </>
   );
 }
