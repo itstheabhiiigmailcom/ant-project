@@ -1,5 +1,6 @@
 import { BackgroundVideo } from '@/components/background-video';
 import HeroAnimation from '@/components/hero-animation';
+import ImageComponent from '@/components/image-rotation';
 
 async function Home() {
   return (
@@ -28,6 +29,12 @@ async function Home() {
         <CarComponent />
       </div> */}
 
+      <div className="h-300 w-full bg-blue-100" />
+      <ImageComponent
+        className="h-64 w-64"
+        image="/image.png"
+        threshold={0.5}
+      />
       <div className="h-300 w-full bg-blue-100" />
     </>
   );
