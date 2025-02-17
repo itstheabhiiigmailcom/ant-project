@@ -1,6 +1,6 @@
 import { BackgroundVideo } from '@/components/background-video';
 import HeroAnimation from '@/components/hero-animation';
-import ImageComponent from '@/components/image-rotation';
+import ImageComponent from '@/components/image-component';
 
 async function Home() {
   return (
@@ -34,6 +34,9 @@ async function Home() {
         className="h-64 w-64"
         image="/image.png"
         threshold={0.5}
+        rotate={15}
+        rotateX={15}
+        rotateY={-15}
       />
       <div className="h-300 w-full bg-blue-100" />
     </>
