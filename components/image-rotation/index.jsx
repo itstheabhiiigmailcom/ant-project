@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
-const ImageComponent = ({ className, image, threshold = 0.5 }) => {
+const ImageRotation = ({ className, image, threshold = 0.5 }) => {
   const imageRef = useRef(null);
   const [isInView, setIsInView] = useState(false);
 
@@ -53,4 +53,4 @@ const ImageComponent = ({ className, image, threshold = 0.5 }) => {
   );
 };
 
-export default ImageComponent;
+export default ImageRotation;

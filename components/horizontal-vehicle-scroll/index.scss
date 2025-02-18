@@ -1,0 +1,50 @@
+// Responsive Car Scaling
+.car {
+  width: 18vw; // Responsive width
+  height: auto;
+  aspect-ratio: 17 / 4.7;
+  position: relative;
+}
+
+// Responsive Wheels
+.wheel {
+  width: 4vw; // Responsive scaling
+  height: auto;
+  aspect-ratio: 1 / 1;
+  transform-origin: center;
+}
+
+.wheel-rear {
+  bottom: -10%; // Positioning remains consistent
+  left: 15%;
+}
+
+.wheel-front {
+  bottom: -10%;
+  left: 75%;
+}
+
+// Car Movement
+@keyframes car-move {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+.animate-car {
+  animation: car-move 11s linear infinite;
+}
+
+// Wheel Rotation
+@keyframes wheel-rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-wheel {
+  animation: wheel-rotate 0.6s linear infinite;
+}
