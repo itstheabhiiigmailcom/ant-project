@@ -1,6 +1,7 @@
 import { BackgroundVideo } from '@/components/background-video';
 import HeroAnimation from '@/components/hero-animation';
 import ImageComponent from '@/components/image-component';
+import VehicleScrollEffect from '@/components/vehicle-scroll-effect';
 
 async function Home() {
   return (
@@ -37,6 +38,12 @@ async function Home() {
         rotate={15}
         rotateX={15}
         rotateY={-15}
+      />
+      <div className="h-300 w-full bg-blue-100" />
+      <VehicleScrollEffect
+        floatingImg="http://www.redanttechsys.com/assets/img/hero/concept-4.png"
+        backgroundImage="/road.jpeg"
+        className="h-[500vh]"
       />
       <div className="h-300 w-full bg-blue-100" />
     </>

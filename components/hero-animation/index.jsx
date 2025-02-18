@@ -9,17 +9,18 @@ const HeroAnimation = ({
   floatingClassName = '',
 }) => {
   const parentRef = useRef(null);
+  const bgRef = useRef(null);
+  const floatingRef = useRef(null);
   const initialBgScale = 1.5;
+
   useEffect(() => {
     const parent = parentRef.current;
-    if (!parent) return;
+    const bg = bgRef.current;
+    const floatingElement = floatingRef.current;
 
-    const bg = parent.querySelector('.background-image');
-    const floatingElement = parent.querySelector('.floating-element');
+    if (!parent || !bg || !floatingElement) return;
 
     const handleScroll = () => {
-      if (!bg || !floatingElement) return;
-
       const parentRect = parent.getBoundingClientRect();
       const scrollProgress = Math.max(
         0,
@@ -47,9 +48,10 @@ const HeroAnimation = ({
   }, []);
 
   return (
-    <div ref={parentRef} className={`relative ${className}`}>
+    <div ref={parentRef} className={`hero-animation relative ${className}`}>
       <section className="sticky top-0 h-[50%] overflow-hidden">
         <div
+          ref={bgRef}
           className="background-image absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
           style={{
             backgroundImage: `url(${backgroundImage})`,
@@ -57,6 +59,7 @@ const HeroAnimation = ({
           }}
         />
         <div
+          ref={floatingRef}
           className={`floating-element absolute top-1/2 left-1/2 bg-contain bg-center bg-no-repeat ${floatingClassName}`}
           style={{
             backgroundImage: `url(${floatingImage})`,

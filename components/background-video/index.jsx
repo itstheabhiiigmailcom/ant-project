@@ -41,7 +41,7 @@ export const BackgroundVideo = ({
   return (
     <div className={`relative w-full bg-black ${className}`}>
       {/* Video Wrapper - Ensures it stays inside the container */}
-      <div className="relative h-full w-full overflow-hidden">
+      <div className="relative size-full overflow-hidden">
         {/* Gray Background while Loading */}
         {isLoading && (
           <div className="shimmer-effect absolute inset-0 transition-opacity duration-500"></div>
