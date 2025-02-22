@@ -49,7 +49,7 @@ const HeroAnimation = ({
 
   return (
     <div ref={parentRef} className={`hero-animation relative ${className}`}>
-      <section className="sticky top-0 h-[50%] overflow-hidden">
+      <div className="sticky top-0 h-[50%] overflow-hidden">
         <div
           ref={bgRef}
           className="background-image absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
@@ -67,7 +67,7 @@ const HeroAnimation = ({
             opacity: 1,
           }}
         />
-      </section>
+      </div>
     </div>
   );
 };

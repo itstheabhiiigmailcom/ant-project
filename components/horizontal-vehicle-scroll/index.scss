@@ -1,31 +1,5 @@
-// Responsive Car Scaling
-.car {
-  width: 18vw; // Responsive width
-  height: auto;
-  aspect-ratio: 17 / 4.7;
-  position: relative;
-}
-
-// Responsive Wheels
-.wheel {
-  width: 4vw; // Responsive scaling
-  height: auto;
-  aspect-ratio: 1 / 1;
-  transform-origin: center;
-}
-
-.wheel-rear {
-  bottom: -10%; // Positioning remains consistent
-  left: 15%;
-}
-
-.wheel-front {
-  bottom: -10%;
-  left: 75%;
-}
-
-// Car Movement
-@keyframes car-move {
+// FloatingImg Movement
+@keyframes floatingImg-move {
   0% {
     transform: translateX(-100%);
   }
@@ -34,8 +8,25 @@
   }
 }
 
-.animate-car {
-  animation: car-move 11s linear infinite;
+.horizontal-vehicle-movement .animate-floatingImg {
+  bottom: 38px;
+  animation: floatingImg-move var(--floatingImg-movement-duration-lg, 11s)
+    linear infinite;
+}
+
+/* Media Queries for Different Durations */
+@media (max-width: 640px) {
+  .horizontal-vehicle-movement .animate-floatingImg {
+    bottom: 38px;
+    animation-duration: var(--floatingImg-movement-duration-sm, 15s);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .horizontal-vehicle-movement .animate-floatingImg {
+    bottom: 38px;
+    animation-duration: var(--floatingImg-movement-duration-md, 12s);
+  }
 }
 
 // Wheel Rotation
@@ -45,6 +36,19 @@
   }
 }
 
-.animate-wheel {
-  animation: wheel-rotate 0.6s linear infinite;
+.horizontal-vehicle-movement .animate-wheel {
+  animation: wheel-rotate var(--wheel-spin-duration-lg, 0.6s) linear infinite;
+}
+
+/* Media Queries for Different Wheel Spin Speeds */
+@media (max-width: 640px) {
+  .horizontal-vehicle-movement .animate-wheel {
+    animation-duration: var(--wheel-spin-duration-sm, 1.2s);
+  }
+}
+
+@media (min-width: 641px) and (max-width: 1024px) {
+  .horizontal-vehicle-movement .animate-wheel {
+    animation-duration: var(--wheel-spin-duration-md, 0.8s);
+  }
 }

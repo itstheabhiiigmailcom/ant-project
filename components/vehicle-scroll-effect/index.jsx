@@ -9,6 +9,7 @@ const VehicleScrollEffect = ({
   backgroundImage,
   floatingImg,
   className = '',
+  floatingImgClassName = '',
 }) => {
   const parentRef = useRef(null);
   const backgroundRef = useRef(null);
@@ -42,11 +43,11 @@ const VehicleScrollEffect = ({
 
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  });
 
   return (
     <div ref={parentRef} className={`card-animation relative ${className}`}>
-      <section className="sticky top-0 h-[50%] max-h-dvh overflow-hidden">
+      <div className="sticky top-0 h-[50%] max-h-dvh overflow-hidden">
         {/* Background Image */}
         <div
           ref={backgroundRef}
@@ -59,7 +60,7 @@ const VehicleScrollEffect = ({
         {/* Car Image */}
         <div
           ref={carRef}
-          className="floating-element absolute h-20 w-20 -translate-x-1/2 bg-contain bg-center bg-no-repeat"
+          className={`floating-element absolute ${floatingImgClassName} -translate-x-1/2 bg-contain bg-center bg-no-repeat`}
           style={{
             backgroundImage: `url(${floatingImg})`,
             top: `${topPosition}%`, // Initial position remains constant,
@@ -67,7 +68,7 @@ const VehicleScrollEffect = ({
             opacity: 1,
           }}
         />
-      </section>
+      </div>
     </div>
   );
 };
