@@ -3,9 +3,10 @@ import './index.scss';
 import { useEffect, useRef, useState } from 'react';
 
 export const BackgroundVideo = ({
-  className,
+  className = 'h-[700px] w-full bg-black',
   videoUrl,
   thresholdView = 0.5,
+  childrenClassName = 'flex items-center justify-center text-white',
   children,
 }) => {
   const videoRef = useRef(null);
@@ -39,7 +40,7 @@ export const BackgroundVideo = ({
   }, [thresholdView]);
 
   return (
-    <div className={`relative w-full bg-black ${className}`}>
+    <div className={`relative ${className}`}>
       {/* Video Wrapper - Ensures it stays inside the container */}
       <div className="relative size-full overflow-hidden">
         {/* Gray Background while Loading */}
@@ -62,7 +63,7 @@ export const BackgroundVideo = ({
       </div>
 
       {/* Overlay Content */}
-      <div className="absolute inset-0 z-1 flex items-center justify-center text-white">
+      <div className={`absolute inset-0 z-1 ${childrenClassName}`}>
         {children}
       </div>
     </div>

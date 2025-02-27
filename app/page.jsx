@@ -6,32 +6,35 @@
 import VehicleScrollEffect from '@/components/vehicle-scroll-effect';
 import TerrainVehicleMovement from '@/components/terrain-vehicle-movement';
 import VideoScrollEffect from '@/components/video-scroll-effect';
+import TextAnimation from '@/components/text-animation';
+import ImageGrid from '@/components/image-grid';
 
 async function Home() {
   return (
     <>
       {/* <div className="bg-blue-500 py-[100vh]">
         <BackgroundVideo
-          className="h-[700px] w-full"
+          className="h-[700px] w-full bg-black"
           videoUrl="https://videos.pexels.com/video-files/4562551/4562551-hd_1280_720_30fps.mp4"
           thresholdView={0.5}
+          childrenClassName="flex items-center justify-center text-white"
         >
           <h1 className="text- text-center text-xl font-bold text-white sm:text-2xl md:text-3xl lg:text-4xl">
             Content Over the Background
           </h1>
         </BackgroundVideo>
-      </div>
-      <div className="relative">
+      </div> */}
+      {/* <div className="relative">
         <HeroAnimation
           backgroundImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e6c13961e55_442380534.webp"
           floatingImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e1667961e56_Drone.webp"
           className="h-[200vh] bg-black"
           floatingClassName="h-[300px] w-[300px]"
         />
-      </div>
+      </div> */}
 
-      <div className="h-300 w-full bg-blue-100" />
-      <ImageRotation
+      {/* <div className="h-300 w-full bg-blue-100" /> */}
+      {/* <ImageRotation
         className="h-64 w-64"
         image="/image.png"
         threshold={0.5}
@@ -39,25 +42,15 @@ async function Home() {
         rotateX={15}
         rotateY={-15}
       /> */}
-      <div className="h-300 w-full bg-blue-300" />
-      <VehicleScrollEffect
-        topPosition={43} //63
-        leftPosition={76.8} //49.8
-        floatingImgScaleFactor={2.5}
-        floatingImg="http://www.redanttechsys.com/assets/img/hero/concept-4.png"
-        backgroundImage="/hilly_road2.jpg"
-        className="h-[500vh]"
-        floatingImgClassName="h-50 w-50"
-      />
 
       {/* <div className="h-300 w-full bg-blue-300" />
       <HorizontalVehicleMovement
-        skyImage="/sky.jpeg"
-        treeImage="/tree-removebg-preview.png"
-        trackImage="/track.jpeg"
-        floatingImg="/car-removebg-preview.png"
-        wheelSpinDuration={wheelSpinDuration} // Set custom duration for wheel spin
-        floatingImgMovementDuration={floatingImgMovementDuration} // Set custom duration for car movement
+        skyImage="/horizontal-vehicle-scroll/sky.jpeg"
+        treeImage="/horizontal-vehicle-scroll/tree-removebg-preview.png"
+        trackImage="/horizontal-vehicle-scroll/track.jpeg"
+        floatingImg="/horizontal-vehicle-scroll/car-removebg-preview.png"
+        wheelSpinDuration={{ sm: '1.2s', md: '0.8s', lg: '0.6s' }} // Set custom duration for wheel spin
+        floatingImgMovementDuration={{ sm: '15s', md: '12s', lg: '11s' }} // Set custom duration for car movement
         wheels={[
           {
             image: '/wheel1-removebg-preview.png',
@@ -74,32 +67,49 @@ async function Home() {
         trackImgClassName="bottom-0 h-[20vh]"
         treeImgClassName="bottom-4 h-[87%]"
       /> */}
+      <div className="h-300 w-full bg-blue-200" />
 
-      <div className="h-300 w-full bg-blue-300" />
+      <VehicleScrollEffect
+        topPosition={53} //63
+        leftPosition={50.8} //49.8
+        floatingImgScaleFactor={2.5}
+        floatingImg="/vehicle-scroll-effect/copy1-removebg-preview.png" //http://www.redanttechsys.com/assets/img/hero/concept-4.png
+        backgroundImage="/vehicle-scroll-effect/blurry_road.avif"
+        className="h-[500vh]"
+        floatingImgClassName="
+        top-[55%] left-[51%]  w-39 h-39
+        md:w-42 md:h-42 md:top-[49%] md:left-[51%]
+        lg:w-50 lg:h-50 lg:top-[53%] lg:left-[50.8%]
+      "
+      />
+
+      <div className="h-300 w-full bg-blue-200" />
       <TerrainVehicleMovement
-        terrainImage="/hilly_road.jpg"
-        floatingImg="/jeep.png"
+        terrainImage="/terrain-vehicle-movement/dessert.jpg"
+        svgHeight="sm:h-[60vh] md:h-[80vh] lg:h-[100vh]"
+        floatingGroupClassName=" sm:h-[50px] sm:w-[120px] md:h-[70px] md:w-[180px] lg:h-[100px] lg:w-[250px]" // Floating Image + wheels
+        floatingImg="/terrain-vehicle-movement/RED ANT UGV usecases.897.png"
         wheels={[
           {
-            image: '/wheel1-removebg-preview.png',
-            x: 68, // Adjust X position
-            y: 195, // Adjust Y position
+            image: '/terrain-vehicle-movement/wheel1-removebg-preview.png',
+            x: 66, // Adjust X position
+            y: 196, // Adjust Y position
           },
           {
-            image: '/wheel2-removebg-preview.png',
-            x: 187, // Adjust X position
+            image: '/terrain-vehicle-movement/wheel2-removebg-preview.png',
+            x: 169, // Adjust X position
             y: 195, // Adjust Y position
           },
         ]}
-        wheelHeight={56}
-        wheelWidth={56}
-        floatingImgWidth={197}
+        wheelHeight={50}
+        wheelWidth={50}
+        floatingImgWidth={177}
         floatingImgHeight={100}
-        floatingImgPosition={{ x: -22, y: 14, rotate: 8 }}
+        floatingImgPosition={{ x: -22, y: 8, rotate: -1 }}
         wheelSpinDuration={{ sm: '1.2s', md: '0.8s', lg: '2s' }} // Set custom duration for wheel spin
         floatingImgMovementDuration={{ sm: '15s', md: '12s', lg: '25s' }} // Set custom duration for car movement
       />
-      <div className="h-300 w-full bg-blue-300" />
+      <div className="h-500 w-full bg-blue-200" />
 
       <div>
         <VideoScrollEffect
@@ -121,7 +131,67 @@ async function Home() {
           </div>
         </VideoScrollEffect>
       </div>
-      <div className="h-300 w-full bg-blue-300" />
+      <div className="h-300 w-full bg-blue-200" />
+      <TextAnimation
+        className="size-full"
+        text="Welcome to RedAnt! this is some random text"
+        textColor="#FF5733"
+        fontSize="text-5xl"
+        fontFamily="Cursive"
+        letterSpacing="tracking-widest"
+        animationDuration={0.4}
+        animationDelay={0.25}
+        maxCharsPerLine={25}
+        lineSpacing={30}
+      />
+      <div className="h-300 w-full bg-blue-200" />
+      <ImageGrid
+        className="h-screen grid-cols-4 grid-rows-2 gap-4 p-4"
+        ImageWidth={300}
+        ImageHeight={200}
+        images={[
+          {
+            src: '/image-grid/image1.jpeg',
+            animation: 'bounce-top-normal',
+            alt: 'Image 1',
+          },
+          {
+            src: '/image-grid/image2.jpg',
+            animation: 'bounce-bottom-normal',
+            alt: 'Image 2',
+          },
+          {
+            src: '/image-grid/image3.jpeg',
+            animation: 'shake-horizontal-normal',
+            alt: 'Image 3',
+          },
+          {
+            src: '/image-grid/image4.png',
+            animation: 'shake-vertical-normal',
+            alt: 'Image 4',
+          },
+          {
+            src: '/image-grid/image5.jpg',
+            animation: 'shake-top-normal',
+            alt: 'Image 5',
+          },
+          {
+            src: '/image-grid/image6.jpg',
+            animation: 'rotate-in-2-fwd-ccw-normal',
+            alt: 'Image 6',
+          },
+          {
+            src: '/image-grid/image7.jpeg',
+            animation: 'tilt-in-tr-normal',
+            alt: 'Image 7',
+          },
+          {
+            src: '/image-grid/image8.jpeg',
+            animation: 'puff-in-center-normal',
+            alt: 'Image 8',
+          },
+        ]}
+      />
     </>
   );
 }

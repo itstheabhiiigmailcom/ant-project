@@ -13,6 +13,7 @@ const VideoScrollEffect = ({
   const videoRef = useRef(null);
   const contentRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [videoBlur, setVideoBlur] = useState(0); // Blur value in pixels
 
   useEffect(() => {
     const video = videoRef.current;
@@ -52,6 +53,7 @@ const VideoScrollEffect = ({
 
       const childHeight = 1 / totalChildren;
 
+      let maxVisibility = 0;
       for (let i = 0; i < content.children.length; i++) {
         const child = content.children[i];
         const childStart = i * childHeight;
@@ -63,9 +65,11 @@ const VideoScrollEffect = ({
         if (visibilityProgress < 0) visibilityProgress = 0;
         if (visibilityProgress > 1) visibilityProgress = 1;
 
-        // Adjusted opacity logic for smooth fade-out at both ends
-        const fadeOutStart = 0.2; // Start fading out early
-        const fadeOutEnd = 0.8; // Fully faded out near the end
+        maxVisibility = Math.max(maxVisibility, visibilityProgress);
+
+        // Smooth fade-in effect for text
+        const fadeOutStart = 0.2;
+        const fadeOutEnd = 0.8;
 
         let opacity;
         if (visibilityProgress < fadeOutStart) {
@@ -76,12 +80,14 @@ const VideoScrollEffect = ({
           opacity = 1;
         }
 
-        // Smooth transition effect
         const translateY = (1 - visibilityProgress) * 30;
 
         child.style.opacity = opacity;
         child.style.transform = `translateY(${translateY}px)`;
       }
+
+      // Increase blur effect as content becomes visible
+      setVideoBlur(maxVisibility * 10); // Max blur = 10px
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -89,14 +95,16 @@ const VideoScrollEffect = ({
   }, [children]);
 
   return (
-    <div ref={parentRef} className={`relative w-full ${className}`}>
+    <div ref={parentRef} className={`relative ${className}`}>
       <div className="sticky top-0 h-screen overflow-hidden">
         {isLoading && (
           <div className="shimmer-effect absolute inset-0 transition-opacity duration-500"></div>
         )}
+
         <video
           ref={videoRef}
-          className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${videoClassName} ${isLoading ? 'opacity-0' : 'opacity-100'}`}
+          className={`absolute inset-0 h-full w-full object-cover transition-all duration-500 ${videoClassName}`}
+          style={{ filter: `blur(${videoBlur}px)` }} // Apply dynamic blur
           autoPlay
           loop
           muted
@@ -108,14 +116,15 @@ const VideoScrollEffect = ({
         </video>
       </div>
 
+      {/* Content Over the Video */}
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center px-4 text-white md:px-8 lg:px-16"
+        className="absolute inset-0 flex flex-col items-center justify-center px-4 text-black drop-shadow-md md:px-8 lg:px-16"
       >
         {React.Children.map(children, (child, index) => (
           <div
             key={index}
-            className="child-content flex h-screen items-center justify-center text-center"
+            className="child-content flex h-screen items-center justify-center text-center text-2xl leading-snug font-bold drop-shadow-lg"
           >
             {child}
           </div>

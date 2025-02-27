@@ -5,7 +5,7 @@ import './index.scss';
 const HeroAnimation = ({
   backgroundImage,
   floatingImage,
-  className,
+  className = 'h-[200vh] bg-black',
   floatingClassName = '',
 }) => {
   const parentRef = useRef(null);

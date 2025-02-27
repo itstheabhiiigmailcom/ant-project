@@ -2,6 +2,8 @@ import './index.scss';
 
 const TerrainVehicleMovement = ({
   terrainImage = '/terrain.jpg',
+  svgHeight = 'sm:h-[60vh] md:h-[80vh] lg:h-[100vh]',
+  floatingGroupClassName = 'sm:h-[50px] sm:w-[120px] md:h-[70px] md:w-[180px] lg:h-[100px] lg:w-[250px]',
   floatingImg,
   wheels = [
     { image: null, x: 0, y: 0 },
@@ -27,7 +29,7 @@ const TerrainVehicleMovement = ({
   return (
     <div className="terrain-vehicle-container size-full overflow-hidden">
       <svg
-        className="terrain-vehicle-svg absolute"
+        className={`terrain-vehicle-svg absolute h-auto w-full ${svgHeight}`}
         viewBox="0 0 800 400"
         width="100%"
         height="100%"
@@ -43,19 +45,19 @@ const TerrainVehicleMovement = ({
 
         {/* Floating Vehicle + Wheels Container */}
         <g
-          className={`terrain-vehicle-movement animate-floatingImg`}
+          className={`terrain-vehicle-movement animate-floatingImg ${floatingGroupClassName}`}
           style={{
             '--floatingImg-movement-duration-sm': floatingMoveSm,
             '--floatingImg-movement-duration-md': floatingMoveMd,
             '--floatingImg-movement-duration-lg': floatingMoveLg,
             transform: `translate(${floatingImgPosition.x}vh, ${floatingImgPosition.y}vh) rotate(${floatingImgPosition.rotate}deg)`,
-            transformOrigin: `${floatingImgWidth / 2}px ${floatingImgHeight / 2}px`, // Set origin to center of vehicle
+            transformOrigin: `187.5px 132.5px`, // Set origin to center of vehicle
           }}
         >
           {/* Floating Image Body */}
           {floatingImg && (
             <image
-              // className={floatingImgClassName}
+              className=""
               href={floatingImg}
               x="50"
               y="150"
@@ -76,7 +78,7 @@ const TerrainVehicleMovement = ({
                 width={wheelWidth}
                 height={wheelHeight}
                 style={{
-                  transformOrigin: '28px 28px', // Center for rotation
+                  transformOrigin: '25px 25px', // Center for rotation
                   transformBox: 'fill-box',
                   '--wheel-spin-duration-sm': wheelSpinSm,
                   '--wheel-spin-duration-md': wheelSpinMd,
