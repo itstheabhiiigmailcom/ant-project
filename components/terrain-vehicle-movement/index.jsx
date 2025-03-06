@@ -11,8 +11,8 @@ const TerrainVehicleMovement = ({
   ],
   wheelWidth = 46, // Default wheel width
   wheelHeight = 50, // Default wheel height
-  floatingImgWidth = 200, // Default floating image width
-  floatingImgHeight = 80, // Default floating image height
+  floatingImgWidth = 300, // Default floating image width
+  floatingImgHeight = 3000, // Default floating image height
   floatingImgPosition = { x: 0, y: 0, rotate: 0 },
   wheelSpinDuration = { sm: '1.2s', md: '0.8s', lg: '0.6s' }, // Object for different screen sizes
   floatingImgMovementDuration = { sm: '25s', md: '22s', lg: '21s' }, // Object for different screen sizes
@@ -27,7 +27,7 @@ const TerrainVehicleMovement = ({
   const floatingMoveLg = floatingImgMovementDuration.lg || '11s';
 
   return (
-    <div className="terrain-vehicle-container size-full overflow-hidden">
+    <div className="terrain-vehicle-movement size-full overflow-hidden">
       <svg
         className={`terrain-vehicle-svg absolute h-auto w-full ${svgHeight}`}
         viewBox="0 0 800 400"
@@ -45,7 +45,7 @@ const TerrainVehicleMovement = ({
 
         {/* Floating Vehicle + Wheels Container */}
         <g
-          className={`terrain-vehicle-movement animate-floatingImg ${floatingGroupClassName}`}
+          className={`vehicle-movement animate-floatingImg ${floatingGroupClassName}`}
           style={{
             '--floatingImg-movement-duration-sm': floatingMoveSm,
             '--floatingImg-movement-duration-md': floatingMoveMd,
@@ -57,10 +57,9 @@ const TerrainVehicleMovement = ({
           {/* Floating Image Body */}
           {floatingImg && (
             <image
-              className=""
               href={floatingImg}
-              x="50"
-              y="150"
+              x="200"
+              y="151"
               width={floatingImgWidth}
               height={floatingImgHeight}
             />
@@ -78,7 +77,7 @@ const TerrainVehicleMovement = ({
                 width={wheelWidth}
                 height={wheelHeight}
                 style={{
-                  transformOrigin: '25px 25px', // Center for rotation
+                  transformOrigin: 'center center', // Center for rotation
                   transformBox: 'fill-box',
                   '--wheel-spin-duration-sm': wheelSpinSm,
                   '--wheel-spin-duration-md': wheelSpinMd,

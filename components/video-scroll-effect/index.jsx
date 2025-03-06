@@ -7,6 +7,7 @@ const VideoScrollEffect = ({
   className = '',
   videoClassName = '',
   children,
+  childrenClassName = 'px-4 text-black drop-shadow-md md:px-8 lg:px-16',
   thresholdView = 0.5,
 }) => {
   const parentRef = useRef(null);
@@ -95,7 +96,7 @@ const VideoScrollEffect = ({
   }, [children]);
 
   return (
-    <div ref={parentRef} className={`relative ${className}`}>
+    <div ref={parentRef} className={`video-scroll-effect relative ${className}`}>
       <div className="sticky top-0 h-screen overflow-hidden">
         {isLoading && (
           <div className="shimmer-effect absolute inset-0 transition-opacity duration-500"></div>
@@ -119,7 +120,7 @@ const VideoScrollEffect = ({
       {/* Content Over the Video */}
       <div
         ref={contentRef}
-        className="absolute inset-0 flex flex-col items-center justify-center px-4 text-black drop-shadow-md md:px-8 lg:px-16"
+        className={`absolute inset-0 flex flex-col items-center justify-center ${childrenClassName}`}
       >
         {React.Children.map(children, (child, index) => (
           <div

@@ -39,7 +39,7 @@
   }
 }
 
-.bounce-top-normal:hover {
+.image-grid .bounce-top-normal:hover {
   animation: bounce-top 0.9s ease 0s 1 normal both;
 }
 
@@ -82,7 +82,7 @@
   }
 }
 
-.bounce-bottom-normal:hover {
+.image-grid .bounce-bottom-normal:hover {
   animation: bounce-bottom 0.9s ease 0s 1 normal both;
 }
 
@@ -110,7 +110,7 @@
   }
 }
 
-.shake-horizontal-normal:hover {
+.image-grid .shake-horizontal-normal:hover {
   animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1
     normal both;
 }
@@ -139,7 +139,7 @@
   }
 }
 
-.shake-vertical-normal:hover {
+.image-grid .shake-vertical-normal:hover {
   animation: shake-vertical 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1
     normal both;
 }
@@ -171,7 +171,7 @@
   }
 }
 
-.shake-top-normal:hover {
+.image-grid .shake-top-normal:hover {
   animation: shake-top 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) 0s 1 normal
     both;
 }
@@ -187,7 +187,7 @@
   }
 }
 
-.rotate-in-2-fwd-ccw-normal:hover {
+.image-grid .rotate-in-2-fwd-ccw-normal:hover {
   animation: rotate-in-2-fwd-ccw 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1
     normal both;
 }
@@ -204,7 +204,7 @@
   }
 }
 
-.tilt-in-tr-normal:hover {
+.image-grid .tilt-in-tr-normal:hover {
   animation: tilt-in-tr 0.65s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0s 1 normal
     both;
 }
@@ -222,7 +222,7 @@
   }
 }
 
-.puff-in-center-normal:hover {
+.image-grid .puff-in-center-normal:hover {
   animation: puff-in-center 0.7s cubic-bezier(0.47, 0, 0.745, 0.715) 0s 1 normal
     both;
 }

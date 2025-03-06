@@ -8,12 +8,21 @@
     transform: scale(1) translate(0, 0);
     transform-origin: center;
   }
+  50% {
+    transform: scale(1.15) translateX(0px);
+    transform-origin: center;
+  }
   100% {
-    transform: scale(1.15) translateX(0px); /* Remove left shift */
+    transform: scale(1) translate(0, 0);
     transform-origin: center;
   }
 }
 
-.kenburns-right-normal {
-  animation: kenburns-right 5s ease-out 0s 1 normal both;
+.floating-text .kenburns-right-normal {
+  animation: kenburns-right 10s ease-in-out 0s infinite normal both;
+  animation-play-state: paused;
+}
+
+.floating-text .animate {
+  animation-play-state: running;
 }

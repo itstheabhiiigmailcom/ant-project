@@ -19,7 +19,7 @@
   }
 }
 
-.wheel-rotate {
+.vehicle-scroll-effect .wheel-rotate {
   animation: wheel-rotation 1s linear infinite; // Slower animation for better visibility
   background-size: cover;
 }
@@ -33,81 +33,7 @@
   }
 }
 
-.wheel-reverse {
+.vehicle-scroll-effect .wheel-reverse {
   animation: wheel-rotation-reverse 1s linear infinite; // Slower animation for better visibility
   background-size: cover;
 }
-
-// @media (max-width: 768px) {
-//   .background-image {
-//     background-position: center top; /* Adjusts for smaller screens */
-//   }
-// }
-
-// @media (max-width: 480px) {
-//   .background-image {
-//     background-size: contain; /* Prevents cropping on very small screens */
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .background-image {
-//     background-size: contain; /* Prevents cropping on very small screens */
-//   }
-// }
-
-// .floating-element {
-//   width: 200px; /* Default width */
-//   height: 200px;
-// }
-
-// @media (max-width: 1024px) {
-//   .floating-element {
-//     width: 150px;
-//     height: 150px;
-//     top: 43.2591% !important;
-//     left: 76.8% !important;
-//   }
-// }
-
-// @media (max-width: 768px) {
-//   .floating-element {
-//     width: 120px;
-//     height: 120px;
-//     top: 43.2591% !important;
-//     left: 76.8% !important;
-//   }
-// }
-
-// @media (max-width: 620px) {
-//   .floating-element {
-//     width: 100px;
-//     height: 100px;
-//     top: 56.2591% !important;
-//     left: 83% !important;
-//   }
-// }
-// @media (max-width: 520px) {
-//   .floating-element {
-//     width: 100px;
-//     height: 104px;
-//     left: 90% !important;
-//     top: 54% !important;
-//   }
-// }
-// @media (max-width: 420px) {
-//   .floating-element {
-//     width: 100px;
-//     height: 100px;
-//     left: 104% !important;
-//     top: 47% !important;
-//   }
-// }
-// @media (max-width: 420px) {
-//   .floating-element {
-//     width: 72px;
-//     height: 100px;
-//     left: 104% !important;
-//     top: 47% !important;
-//   }
-// }

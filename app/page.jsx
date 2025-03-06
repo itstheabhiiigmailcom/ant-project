@@ -1,13 +1,13 @@
 // import { BackgroundVideo } from '@/components/background-video';
 // import HeroAnimation from '@/components/hero-animation';
 // import ImageRotation from '@/components/image-rotation';
-// // import { ContentOverVideo } from '@/components/content-over-video';
 // import HorizontalVehicleMovement from '@/components/horizontal-vehicle-scroll';
-import VehicleScrollEffect from '@/components/vehicle-scroll-effect';
-import TerrainVehicleMovement from '@/components/terrain-vehicle-movement';
-import VideoScrollEffect from '@/components/video-scroll-effect';
-import TextAnimation from '@/components/text-animation';
-import ImageGrid from '@/components/image-grid';
+// import VehicleScrollEffect from '@/components/vehicle-scroll-effect';
+// import TerrainVehicleMovement from '@/components/terrain-vehicle-movement';
+// import VideoScrollEffect from '@/components/video-scroll-effect';
+// import FloatingText from '@/components/floating-text';
+// import ImageGrid from '@/components/image-grid';
+import ComplianceDashboard from '@/components/compliance-dashboard';
 
 async function Home() {
   return (
@@ -23,27 +23,27 @@ async function Home() {
             Content Over the Background
           </h1>
         </BackgroundVideo>
-      </div> */}
-      {/* <div className="relative">
+      </div>
+      <div className="relative">
         <HeroAnimation
           backgroundImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e6c13961e55_442380534.webp"
           floatingImage="https://cdn.prod.website-files.com/63a1c2f787c35e5906961d4f/63a1c2f787c35e1667961e56_Drone.webp"
           className="h-[200vh] bg-black"
           floatingClassName="h-[300px] w-[300px]"
         />
-      </div> */}
+      </div>
 
-      {/* <div className="h-300 w-full bg-blue-100" /> */}
-      {/* <ImageRotation
+      <div className="h-300 w-full bg-blue-100" />
+      <ImageRotation
         className="h-64 w-64"
-        image="/image.png"
+        image="/image-rotation/image.png"
         threshold={0.5}
         rotate={15}
         rotateX={15}
         rotateY={-15}
-      /> */}
+      />
 
-      {/* <div className="h-300 w-full bg-blue-300" />
+      <div className="h-300 w-full bg-blue-300" />
       <HorizontalVehicleMovement
         skyImage="/horizontal-vehicle-scroll/sky.jpeg"
         treeImage="/horizontal-vehicle-scroll/tree-removebg-preview.png"
@@ -66,73 +66,74 @@ async function Home() {
         floatingImgClassName="h-[4.7rem] w-[17rem]"
         trackImgClassName="bottom-0 h-[20vh]"
         treeImgClassName="bottom-4 h-[87%]"
-      /> */}
+      />
       <div className="h-300 w-full bg-blue-200" />
 
       <VehicleScrollEffect
-        topPosition={53} //63
+        topPosition={55} //63
         leftPosition={50.8} //49.8
         floatingImgScaleFactor={2.5}
-        floatingImg="/vehicle-scroll-effect/copy1-removebg-preview.png" //http://www.redanttechsys.com/assets/img/hero/concept-4.png
+        floatingImg="/vehicle-scroll-effect/tank1.png" //http://www.redanttechsys.com/assets/img/hero/concept-4.png
         backgroundImage="/vehicle-scroll-effect/blurry_road.avif"
         className="h-[500vh]"
         floatingImgClassName="
         top-[55%] left-[51%]  w-39 h-39
         md:w-42 md:h-42 md:top-[49%] md:left-[51%]
-        lg:w-50 lg:h-50 lg:top-[53%] lg:left-[50.8%]
+        lg:w-50 lg:h-50 lg:top-[55%] lg:left-[50.8%]
       "
       />
 
       <div className="h-300 w-full bg-blue-200" />
       <TerrainVehicleMovement
-        terrainImage="/terrain-vehicle-movement/dessert.jpg"
+        terrainImage="/terrain-vehicle-movement/snow-desert.jpeg"
         svgHeight="sm:h-[60vh] md:h-[80vh] lg:h-[100vh]"
         floatingGroupClassName=" sm:h-[50px] sm:w-[120px] md:h-[70px] md:w-[180px] lg:h-[100px] lg:w-[250px]" // Floating Image + wheels
-        floatingImg="/terrain-vehicle-movement/RED ANT UGV usecases.897.png"
+        floatingImg="/terrain-vehicle-movement/Pioneer UGV v3.png"
         wheels={[
           {
-            image: '/terrain-vehicle-movement/wheel1-removebg-preview.png',
-            x: 66, // Adjust X position
-            y: 196, // Adjust Y position
+            image: '/terrain-vehicle-movement/pioneer wheel.png',
+            x: 340, // Adjust X position
+            y: 268, // Adjust Y position
           },
           {
-            image: '/terrain-vehicle-movement/wheel2-removebg-preview.png',
-            x: 169, // Adjust X position
-            y: 195, // Adjust Y position
+            image: '/terrain-vehicle-movement/pioneer wheel.png',
+            x: 266, // Adjust X position
+            y: 267, // Adjust Y position
           },
         ]}
-        wheelHeight={50}
-        wheelWidth={50}
-        floatingImgWidth={177}
-        floatingImgHeight={100}
+        wheelHeight={42}
+        wheelWidth={33}
+        floatingImgWidth={237}
+        floatingImgHeight={220}
         floatingImgPosition={{ x: -22, y: 8, rotate: -1 }}
-        wheelSpinDuration={{ sm: '1.2s', md: '0.8s', lg: '2s' }} // Set custom duration for wheel spin
+        wheelSpinDuration={{ sm: '1.2s', md: '0.8s', lg: '5s' }} // Set custom duration for wheel spin
         floatingImgMovementDuration={{ sm: '15s', md: '12s', lg: '25s' }} // Set custom duration for car movement
       />
       <div className="h-500 w-full bg-blue-200" />
 
-      <div>
-        <VideoScrollEffect
-          videoSrc="https://videos.pexels.com/video-files/4562551/4562551-hd_1280_720_30fps.mp4"
-          className="h-[500vh] w-full"
-          videoClassName="opacity-80"
-        >
-          <div>
-            <h1 className="text-4xl font-bold">First Content</h1>
-            <p>This is the first section of content.</p>
-          </div>
-          <div>
-            <h1 className="text-4xl font-bold">Second Content</h1>
-            <p>This is the second section of content.</p>
-          </div>
-          <div>
-            <h1 className="text-4xl font-bold">Third Content</h1>
-            <p>This is the third section of content.</p>
-          </div>
-        </VideoScrollEffect>
-      </div>
+      <VideoScrollEffect
+        videoSrc="https://videos.pexels.com/video-files/4562551/4562551-hd_1280_720_30fps.mp4"
+        className="h-[500vh] w-full"
+        videoClassName="opacity-80"
+        childrenClassName="px-4 text-white drop-shadow-md md:px-8 lg:px-16"
+        thresholdView={0.5}
+      >
+        <div>
+          <h1 className="text-4xl font-bold">First Content</h1>
+          <p>This is the first section of content.</p>
+        </div>
+        <div>
+          <h1 className="text-4xl font-bold">Second Content</h1>
+          <p>This is the second section of content.</p>
+        </div>
+        <div>
+          <h1 className="text-4xl font-bold">Third Content</h1>
+          <p>This is the third section of content.</p>
+        </div>
+      </VideoScrollEffect>
+
       <div className="h-300 w-full bg-blue-200" />
-      <TextAnimation
+      <FloatingText
         className="size-full"
         text="Welcome to RedAnt! this is some random text"
         textColor="#FF5733"
@@ -146,7 +147,7 @@ async function Home() {
       />
       <div className="h-300 w-full bg-blue-200" />
       <ImageGrid
-        className="h-screen grid-cols-4 grid-rows-2 gap-4 p-4"
+        className="grid-cols-4 grid-rows-2 gap-4 p-4"
         ImageWidth={300}
         ImageHeight={200}
         images={[
@@ -191,7 +192,11 @@ async function Home() {
             alt: 'Image 8',
           },
         ]}
-      />
+      /> */}
+
+      {/* <div className="h-300 w-full bg-blue-200" /> */}
+      <ComplianceDashboard />
+      {/* <div className="h-300 w-full bg-blue-200" /> */}
     </>
   );
 }

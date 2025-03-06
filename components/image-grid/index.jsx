@@ -3,13 +3,15 @@ import Image from 'next/image';
 import './index.scss';
 
 const ImageGrid = ({
-  className = 'h-screen grid-cols-4 grid-rows-2 gap-4 p-4',
+  className = ' gap-4 p-4',
   ImageWidth = 300,
   ImageHeight = 200,
-  images,
+  images = [], // Default value for images
 }) => {
   return (
-    <div className={`grid ${className}`}>
+    <div
+      className={`image-grid grid ${className} grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}
+    >
       {images.map((image, index) => (
         <div
           key={index}

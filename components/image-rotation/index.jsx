@@ -27,7 +27,7 @@ const ImageRotation = ({ className, image, threshold = 0.5 }) => {
 
   return (
     <div
-      className="flex h-screen items-center justify-center bg-gray-900"
+      className="image-rotation flex h-screen items-center justify-center bg-gray-900"
       style={{
         backgroundImage: `radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px)`,
         backgroundSize: '20px 20px',

@@ -1,0 +1,111 @@
+// .hidden {
+//   opacity: 0;
+//   pointer-events: none;
+// }
+
+// .curve-line {
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+// }
+
+// .curve-line.draw {
+//   animation: drawCurve 2s linear forwards;
+// }
+
+// .curve-line.disappear {
+//   animation: disappearCurve 2s linear forwards;
+// }
+
+// @keyframes drawCurve {
+//   from {
+//     stroke-dashoffset: 1000;
+//   }
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// @keyframes disappearCurve {
+//   from {
+//     stroke-dashoffset: 0;
+//     opacity: 1;
+//   }
+//   to {
+//     stroke-dashoffset: 1000;
+//     opacity: 0;
+//   }
+// }
+
+// .image-visible {
+//   opacity: 1;
+//   transform: scale(1);
+//   transition:
+//     opacity 1s ease-in,
+//     transform 1s ease-in;
+// }
+
+// .move-left {
+//   transform: translateX(-350%);
+//   transition: transform 1s ease-in-out;
+// }
+
+// .radial-line {
+//   stroke: #007bff;
+//   stroke-width: 2;
+//   stroke-dasharray: 6, 6;
+//   stroke-dashoffset: 200;
+//   animation: drawLine 1.5s linear forwards;
+// }
+
+// @keyframes drawLine {
+//   from {
+//     stroke-dashoffset: 200;
+//   }
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// .moving-spot {
+//   fill: #007bff;
+//   r: 5;
+//   opacity: 1;
+//   animation: moveSpot 2s linear forwards;
+// }
+
+// @keyframes moveSpot {
+//   from {
+//     transform: translate(0, 0);
+//   }
+//   to {
+//     transform: translate(var(--dx), var(--dy));
+//   }
+// }
+
+// .fade-group {
+//   opacity: 0;
+//   animation: fadeInText 0.5s ease-in forwards;
+//   animation-delay: 2s;
+// }
+
+// @keyframes fadeInText {
+//   from {
+//     opacity: 0;
+//   }
+//   to {
+//     opacity: 1;
+//   }
+// }
+
+// .fade-out {
+//   animation: fadeOutText 1s ease-in forwards;
+// }
+
+// @keyframes fadeOutText {
+//   from {
+//     opacity: 1;
+//   }
+//   to {
+//     opacity: 0;
+//   }
+// }

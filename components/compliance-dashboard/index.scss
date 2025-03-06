@@ -1,0 +1,230 @@
+@keyframes moveAlongPath2 {
+  0% {
+    offset-distance: 0%;
+  }
+  100% {
+    offset-distance: 100%;
+  }
+}
+
+@keyframes moveAlongPath3 {
+  0% {
+    offset-distance: 30%;
+  }
+  100% {
+    offset-distance: 60%;
+  }
+}
+
+@keyframes moveAlongPath4 {
+  0% {
+    offset-distance: 40%;
+  }
+  100% {
+    offset-distance: 70%;
+  }
+}
+
+@keyframes drawCurve {
+  from {
+    stroke-dashoffset: 1558;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes disappearCurve {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: 1558;
+  }
+}
+.compliance-dashboard .curve-dot-animation {
+  offset-path: path(
+    'M 610 92 C 62.6756 95.5 -70.3288 95.5 -70.3288 95.5 C -81.7078 95.5 -90.9322 80.126 -90.9322 61.161 S -81.7078 26.822 -70.3288 26.822 C -70.3288 26.822 55.229 26.822 55.229 26.822 C 67.5698 26.822 77.5736 10.149 77.5736 -10.419 C 77.5736 -30.987 67.5698 -47.66 55.229 -47.66 C 55.229 -47.66 -111.3646 -47.66 -111.3646 -47.66 C -123.3046 -47.66 -132.9838 -63.792 -132.9838 -83.692 C -132.9838 -103.592 -123.3046 -119.724 -111.3646 -119.724 C -111.3646 -119.724 75.863 -119.724 75.863 -119.724 C 86.7614 -119.724 95.5958 -134.448 95.5958 -152.612 C 95.5958 -170.776 86.7614 -185.5 75.863 -185.5 C 75.863 -185.5 37 -185 37 -185'
+  );
+  animation: moveAlongPath2 3s linear;
+}
+
+.compliance-dashboard .dot-animation-2 {
+  offset-path: path('M136, 59 H38');
+  animation: moveAlongPath2 1s linear infinite;
+}
+
+.compliance-dashboard .curve-line {
+  stroke-dasharray: 1558;
+  stroke-dashoffset: 1558;
+  animation: drawCurve 3s linear forwards;
+}
+
+.compliance-dashboard .curve-line.disappear {
+  animation: disappearCurve 3s linear forwards;
+}
+
+.compliance-dashboard .circle-tip {
+  opacity: 0; /* Hide initially */
+  transition: opacity 0.5s ease-in-out;
+}
+
+.compliance-dashboard .appear {
+  opacity: 1; /* Show when animation starts */
+}
+
+@keyframes drawLine {
+  0% {
+    width: 0;
+    opacity: 1;
+  }
+  100% {
+    width: 150px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInIcon {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.compliance-dashboard .home-icon-bottom-line {
+  animation: drawLine 1.5s ease-out 3s forwards;
+}
+
+.compliance-dashboard .home-icon-fadein {
+  animation: fadeInIcon 1s ease-in-out 4.5s forwards;
+}
+
+@keyframes slideOutLeft {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-150%);
+    opacity: 0;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes drawCircle {
+  0% {
+    stroke-dashoffset: 283; /* Circumference of circle */
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes rotateDottedCircle {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes drawPath {
+  from {
+    stroke-dashoffset: 1000;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+.compliance-dashboard .slide-out {
+  animation: slideOutLeft 0.8s ease-in-out forwards;
+}
+
+.compliance-dashboard .slide-in {
+  animation: slideInRight 0.8s ease-in-out forwards;
+}
+
+.compliance-dashboard .fade-in {
+  animation: fadeIn 0.6s ease-out forwards;
+}
+
+.compliance-dashboard .draw-circle {
+  stroke-dasharray: 283;
+  animation: drawCircle 2s ease-out forwards;
+}
+
+.compliance-dashboard .rotate-dotted {
+  animation: rotateDottedCircle 20s linear infinite;
+}
+
+.compliance-dashboard .draw-path {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: drawPath 2s ease-out forwards;
+}
+
+.compliance-dashboard .task-card {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.compliance-dashboard .task-card-animate {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+// Add delays for sequential animations
+@for $i from 1 through 5 {
+  .task-card-#{$i} {
+    animation-delay: #{$i * 0.2}s;
+  }
+}
+
+// .tab-indicator {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   height: 4px;
+//   background-color: #10b981;
+//   transition: transform 0.3s ease;
+// }
+
+// .tab-initial .tab-indicator {
+//   transform: translateX(0);
+//   width: 33.33%;
+// }
+
+// .tab-ongoing .tab-indicator {
+//   transform: translateX(100%);
+//   width: 33.33%;
+// }
+
+// .tab-recurring .tab-indicator {
+//   transform: translateX(200%);
+//   width: 33.33%;
+// }

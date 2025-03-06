@@ -56,14 +56,13 @@ const VehicleScrollEffect = ({
       // Car Scaling
       const carScale = 1 + scrollProgress * floatingImgScaleFactor;
       const topPos = initialTop + scrollProgress * 10;
-      const wheelScale = 1 + scrollProgress * 0.2;
 
       floatingElement.style.top = `${topPos}%`;
       floatingElement.style.transform = `scale(${carScale})`;
 
-      // Apply the same transformation to the wheels
-      wheelFront.style.transform = `scale(${wheelScale})`;
-      wheelBack.style.transform = `scale(${wheelScale})`;
+      // Ensure wheels remain the same size
+      // wheelFront.style.transform = 'scale(1)';
+      // wheelBack.style.transform = 'scale(1)';
 
       // Apply animation based on scroll direction
       if (scrollDirection === 'down') {
@@ -88,7 +87,7 @@ const VehicleScrollEffect = ({
         wheelFront.classList.remove('wheel-rotate', 'wheel-reverse');
         wheelBack.classList.remove('wheel-rotate', 'wheel-reverse');
         setScrollDirection(null); // Reset scroll direction
-      }, 100); // Adjust the timeout duration as needed
+      }, 100);
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
@@ -120,6 +119,8 @@ const VehicleScrollEffect = ({
           ref={carRef}
           className={`floating-element absolute ${floatingImgClassName} -translate-x-1/2 bg-contain bg-center bg-no-repeat`}
           style={{
+            width: '312px',
+            height: '212px',
             backgroundImage: `url(${floatingImg})`,
             opacity: 1,
           }}
@@ -127,30 +128,30 @@ const VehicleScrollEffect = ({
           {/* Front Wheel */}
           <div
             ref={wheelFrontRef}
-            className="wheel absolute bg-contain bg-no-repeat"
+            className="absolute bg-contain bg-no-repeat"
             style={{
-              backgroundImage: `url('/vehicle-scroll-effect/left-wheel-copy2.png')`,
-              width: '14%',
-              height: '23%',
-              top: '60%',
-              left: '7.1%',
+              backgroundImage: `url('/vehicle-scroll-effect/left-wheel-new.png')`,
+              width: '9%',
+              height: '19%',
+              top: '56%',
+              left: '27.3%',
               transformOrigin: 'center center',
-              transform: 'scale(1) rotate(-deg)',
+              transform: 'rotateZ(-2deg)',
             }}
           />
 
           {/* Rear Wheel */}
           <div
             ref={wheelBackRef}
-            className="wheel absolute bg-contain bg-no-repeat"
+            className="absolute bg-contain bg-no-repeat"
             style={{
-              backgroundImage: `url('/vehicle-scroll-effect/right-wheel-copy3.png')`,
-              width: '15%',
-              height: '21%',
-              top: '60%',
-              left: '74.42%',
+              backgroundImage: `url('/vehicle-scroll-effect/right-wheel-new.png')`,
+              width: '9%',
+              height: '18%',
+              top: '56%',
+              left: '66.7%',
               transformOrigin: 'center center',
-              transform: 'scale(1) rotateX(3deg) rotateY(0deg) rotateZ(-3deg)',
+              transform: 'rotateX(3deg) rotateY(0deg) rotateZ(0deg)',
             }}
           />
         </div>

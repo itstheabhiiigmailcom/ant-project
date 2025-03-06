@@ -1,0 +1,297 @@
+// @keyframes moveAlongPath1 {
+//   0% {
+//     offset-distance: 0%;
+//   }
+//   100% {
+//     offset-distance: 100%;
+//   }
+// }
+
+// @keyframes moveAlongPath2 {
+//   0% {
+//     offset-distance: 0%;
+//   }
+//   100% {
+//     offset-distance: 100%;
+//   }
+// }
+
+// @keyframes moveAlongPath3 {
+//   0% {
+//     offset-distance: 30%;
+//   }
+//   100% {
+//     offset-distance: 60%;
+//   }
+// }
+
+// @keyframes moveAlongPath4 {
+//   0% {
+//     offset-distance: 40%;
+//   }
+//   100% {
+//     offset-distance: 70%;
+//   }
+// }
+
+// .dot-animation-1 {
+//   offset-path: path(
+//     'M 363 95 C 62.6756 95.5 -70.3288 95.5 -70.3288 95.5 C -81.7078 95.5 -90.9322 80.126 -90.9322 61.161 C -90.9322 42.196 -81.7078 26.822 -70.3288 26.822 C -70.3288 26.822 55.229 26.822 55.229 26.822 C 67.5698 26.822 77.5736 10.149 77.5736 -10.419 C 77.5736 -30.987 67.5698 -47.66 55.229 -47.66 C 55.229 -47.66 -111.3646 -47.66 -111.3646 -47.66 C -123.3046 -47.66 -132.9838 -63.792 -132.9838 -83.692 C -132.9838 -103.592 -123.3046 -119.724 -111.3646 -119.724 C -111.3646 -119.724 75.863 -119.724 75.863 -119.724 C 86.7614 -119.724 95.5958 -134.448 95.5958 -152.612 C 95.5958 -170.776 86.7614 -185.5 75.863 -185.5 C 75.863 -185.5 37 -185 37 -185'
+//   );
+//   animation: moveAlongPath1 3s linear infinite;
+// }
+
+// .dot-animation-2 {
+//   offset-path: path('M136, 59 H38');
+//   animation: moveAlongPath2 3s linear infinite;
+// }
+
+// .dot-animation-3 {
+//   offset-path: path('M0,50 Q100,100 200,50 Q300,0 400,50');
+//   animation: moveAlongPath3 4s ease-in-out infinite alternate;
+// }
+
+// .dot-animation-4 {
+//   offset-path: path('M0,50 Q100,0 200,50 Q300,100 400,0');
+//   animation: moveAlongPath4 4s ease-in-out infinite alternate;
+// }
+
+// @keyframes drawCurve {
+//   0% {
+//     stroke-dashoffset: 1000;
+//   }
+//   100% {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// @keyframes disappearCurve {
+//   0% {
+//     stroke-dashoffset: 0;
+//     opacity: 1;
+//   }
+//   to {
+//     stroke-dashoffset: 1000;
+//     opacity: 0;
+//   }
+// }
+
+// .curve-line {
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+//   animation: drawCurve 2s linear forwards;
+// }
+
+// .curve-line.disappear {
+//   animation: disappearCurve 2s linear forwards;
+// }
+
+// .circle-tip {
+//   fill: #007bff;
+//   r: 6;
+//   opacity: 1;
+// }
+
+// .circle-tip.disappear {
+//   animation: disappearCurve 2s linear forwards;
+// }
+
+// @keyframes slideOutLeft {
+//   0% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: translateX(-150%);
+//     opacity: 0;
+//   }
+// }
+
+// @keyframes slideInRight {
+//   0% {
+//     transform: translateX(100%);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes fadeIn {
+//   from {
+//     opacity: 0;
+//     transform: scale(0.9);
+//   }
+//   to {
+//     opacity: 1;
+//     transform: scale(1);
+//   }
+// }
+
+// @keyframes drawCircle {
+//   0% {
+//     stroke-dashoffset: 283; /* Circumference of circle */
+//   }
+//   100% {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// @keyframes rotateDottedCircle {
+//   from {
+//     transform: rotate(0deg);
+//   }
+//   to {
+//     transform: rotate(360deg);
+//   }
+// }
+
+// @keyframes drawPath {
+//   from {
+//     stroke-dashoffset: 1000;
+//   }
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }
+
+// .slide-out {
+//   animation: slideOutLeft 0.8s ease-in-out forwards;
+// }
+
+// .slide-in {
+//   animation: slideInRight 0.8s ease-in-out forwards;
+// }
+
+// .fade-in {
+//   animation: fadeIn 0.6s ease-out forwards;
+// }
+
+// .draw-circle {
+//   stroke-dasharray: 283;
+//   animation: drawCircle 2s ease-out forwards;
+// }
+
+// .rotate-dotted {
+//   animation: rotateDottedCircle 20s linear infinite;
+// }
+
+// .draw-path {
+//   stroke-dasharray: 1000;
+//   stroke-dashoffset: 1000;
+//   animation: drawPath 2s ease-out forwards;
+// }
+
+// .task-card {
+//   opacity: 0;
+//   transform: translateY(20px);
+// }
+
+// .task-card-animate {
+//   animation: fadeIn 0.5s ease-out forwards;
+// }
+
+// // Add delays for sequential animations
+// @for $i from 1 through 5 {
+//   .task-card-#{$i} {
+//     animation-delay: #{$i * 0.2}s;
+//   }
+// }
+
+// .tab-indicator {
+//   position: absolute;
+//   bottom: 0;
+//   left: 0;
+//   right: 0;
+//   height: 4px;
+//   background-color: #10b981;
+//   transition: transform 0.3s ease;
+// }
+
+// .tab-initial .tab-indicator {
+//   transform: translateX(0);
+//   width: 33.33%;
+// }
+
+// .tab-ongoing .tab-indicator {
+//   transform: translateX(100%);
+//   width: 33.33%;
+// }
+
+// .tab-recurring .tab-indicator {
+//   transform: translateX(200%);
+//   width: 33.33%;
+// }
+
+// // Add animation for the city illustration moving out
+// @keyframes citySlideOut {
+//   0% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+//   100% {
+//     transform: translateX(-150%);
+//     opacity: 0;
+//   }
+// }
+
+// // Add animation for the side items fading out
+// @keyframes fadeOutItems {
+//   0% {
+//     opacity: 1;
+//     transform: translateY(0);
+//   }
+//   100% {
+//     opacity: 0;
+//     transform: translateY(10px);
+//   }
+// }
+
+// // Add animations for text and icons
+// @keyframes flipIcon {
+//   0% {
+//     transform: rotateY(0deg);
+//   }
+//   100% {
+//     transform: rotateY(360deg);
+//   }
+// }
+
+// @keyframes textSlideIn {
+//   0% {
+//     transform: translateX(-10px);
+//     opacity: 0;
+//   }
+//   100% {
+//     transform: translateX(0);
+//     opacity: 1;
+//   }
+// }
+
+// // Classes for the animations
+// .city-slide-out {
+//   animation: citySlideOut 1.5s ease-in-out forwards;
+// }
+
+// .fade-out-items {
+//   animation: fadeOutItems 0.8s ease-out forwards;
+// }
+
+// .flip-icon {
+//   animation: flipIcon 1s ease-out forwards;
+// }
+
+// .text-slide-in {
+//   animation: textSlideIn 0.6s ease-out forwards;
+//   animation-delay: 0.3s;
+//   opacity: 0;
+// }
+
+// // Add a class for the dot at the tip of the curve
+// .curve-dot {
+//   fill: #059669;
+//   r: 6;
+//   stroke: white;
+//   stroke-width: 2;
+// }

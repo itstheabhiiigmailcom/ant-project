@@ -82,78 +82,48 @@
 
 @keyframes floating-img-move {
   0% {
-    transform: translate(-22vh, 8vh) rotate(-1deg);
-  }
-  5% {
-    transform: translate(-18vh, 8vh) rotate(-2deg);
+    transform: translate(73vh, 17vh) rotate(14deg);
   }
   10% {
-    transform: translate(-10vh, 8vh) rotate(-3deg);
-  }
-  15% {
-    transform: translate(-4vh, 8vh) rotate(-3deg);
+    transform: translate(64vh, 15vh) rotate(13deg);
   }
   20% {
-    transform: translate(2vh, 8vh) rotate(-4deg);
-  }
-  25% {
-    transform: translate(7vh, 8vh) rotate(-5deg);
+    transform: translate(52vh, 12vh) rotate(14deg);
   }
   30% {
-    transform: translate(12vh, 8vh) rotate(-6deg);
-  }
-  35% {
-    transform: translate(18vh, 8vh) rotate(-7deg);
+    transform: translate(41vh, 9vh) rotate(15deg);
   }
   40% {
-    transform: translate(25vh, 8vh) rotate(-8deg);
-  }
-  45% {
-    transform: translate(30vh, 8vh) rotate(-9deg);
+    transform: translate(29vh, 3vh) rotate(17deg);
   }
   50% {
-    transform: translate(35vh, 8vh) rotate(-10deg);
-  }
-  55% {
-    transform: translate(42vh, 7vh) rotate(-11deg);
+    transform: translate(15vh, 0vh) rotate(17deg);
   }
   60% {
-    transform: translate(48vh, 7vh) rotate(-12deg);
-  }
-  65% {
-    transform: translate(54vh, 7vh) rotate(-13deg);
+    transform: translate(3vh, -5vh) rotate(22deg);
   }
   70% {
-    transform: translate(60vh, 7vh) rotate(-14deg);
-  }
-  75% {
-    transform: translate(67vh, 6vh) rotate(-15deg);
+    transform: translate(-7vh, -8vh) rotate(22deg);
   }
   80% {
-    transform: translate(74vh, 6vh) rotate(-16deg);
-  }
-  85% {
-    transform: translate(80vh, 6vh) rotate(-17deg);
+    transform: translate(-19vh, -11vh) rotate(21deg);
   }
   90% {
-    transform: translate(86vh, 6vh) rotate(-18deg);
-  }
-  95% {
-    transform: translate(92vh, 6vh) rotate(-19deg);
+    transform: translate(-28vh, -14vh) rotate(20deg);
   }
   100% {
-    transform: translate(98vh, 5vh) rotate(-20deg);
+    transform: translate(-37vh, -15vh) rotate(20deg);
   }
 }
 
-.terrain-vehicle-movement {
+.terrain-vehicle-movement .vehicle-movement {
   animation: floating-img-move var(--floatingImg-movement-duration-lg, 11s)
     linear infinite;
   transform-origin: center;
 }
 
 /* Wheel rotation animation */
-.animate-wheel {
+.terrain-vehicle-movement .animate-wheel {
   animation: wheel-rotate var(--wheel-spin-duration-lg, 0.6s) linear infinite;
   transform-box: fill-box; /* Forces the transform origin to apply correctly */
 }
@@ -161,25 +131,25 @@
 /* Wheel rotation animation */
 @keyframes wheel-rotate {
   100% {
-    transform: rotate(360deg);
+    transform: rotate(-360deg);
   }
 }
 
 /* Media Queries for Different Durations */
 @media (max-width: 640px) {
-  .terrain-vehicle-movement {
+  .terrain-vehicle-movement .terrain-vehicle-movement {
     animation-duration: var(--floatingImg-movement-duration-sm, 15s);
   }
-  .animate-wheel {
+  .terrain-vehicle-movement .animate-wheel {
     animation-duration: var(--wheel-spin-duration-sm, 1.2s);
   }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-  .terrain-vehicle-movement {
+  .terrain-vehicle-movement .terrain-vehicle-movement {
     animation-duration: var(--floatingImg-movement-duration-md, 12s);
   }
-  .animate-wheel {
+  .terrain-vehicle-movement .animate-wheel {
     animation-duration: var(--wheel-spin-duration-md, 0.8s);
   }
 }
